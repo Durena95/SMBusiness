@@ -1,0 +1,51 @@
+﻿@model  SMBusiness.Models.RequestAQuoteModel
+@{
+    ViewBag.Title = "RequestAQuote";
+    List<string> ProjectTypes = new List<string>();
+    ProjectTypes.Add("SharePoint Administration");
+    ProjectTypes.Add(".NET Development");
+    ProjectTypes.Add("UI/UX Design");
+    ProjectTypes.Add("iOS Development");
+}
+
+<h2>Request a Quote</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <fieldset>
+        <legend>Request a quote form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m=>m.ProjectType)
+                @Html.DropDownListFor(m=>m.ProjectType, new MultiSelectList(ProjectTypes))
+            </li>
+            <li>
+                @Html.LabelFor(m=>m.ContactName)
+                @Html.EditorFor(m=>m.ContactName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Zipcode)
+                @Html.EditorFor(m => m.Zipcode)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.DayTimePhone)
+                @Html.EditorFor(m => m.DayTimePhone)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.EditorFor(m => m.Email)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ProjectDescription)
+                @Html.EditorFor(m => m.ProjectDescription)
+            </li>
+        </ol>
+        <input type="submit" value="Request quote"/>
+    </fieldset>
+
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
